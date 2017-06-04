@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 
+
 <script>
 	$(function(){
 		$("#PostOperation>.post-edit-link").addClass("ts secondary opinion labeled icon button click load"); //幫首頁的編輯按鈕加 class (登入狀態)

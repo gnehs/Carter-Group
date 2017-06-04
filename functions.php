@@ -136,7 +136,7 @@ function gnehs_login_css_group() {
 add_action('login_head', 'gnehs_login_css_group');
 
 /*
-	登入Logo連結替換
+	登入 Logo 連結替換
 */
 function custom_loginlogo_url($url) {
     return get_bloginfo('url');
