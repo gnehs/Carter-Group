@@ -129,7 +129,7 @@ add_action('wp_dashboard_setup', 'wpc_add_dashboard_widgets' );
 function gnehs_login_css_group() {
     echo '<style type="text/css">
             .login h1 a { 
-                background-image:url(https://tg.gnehs.com.tw/wp-content/uploads/2017/04/cropped-logo.png) !important;
+                background-image:url(//i.imgur.com/xqh06wM.png) !important;
             }
             </style>';
 }
