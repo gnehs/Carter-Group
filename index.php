@@ -1,11 +1,4 @@
 <?php get_header(); ?>
-
-
-<script>
-	$(function(){
-		$("#PostOperation>.post-edit-link").addClass("ts secondary opinion labeled icon button click load"); //幫首頁的編輯按鈕加 class (登入狀態)
-	});
-</script>
 <div class="ts narrow container" style="padding-top: 20px;"><div class="ts stackable grid">
     <div class="twelve wide column">
 		<!-- Blog Post -->
@@ -39,19 +32,11 @@
 					<?php the_excerpt(); ?>
 				</div>
 			</div>
-			<?php if ( !is_user_logged_in() ) : ?>
-				<div class="ts fluid bottom attached buttons" id="PostOperation">
-					<a class="ts opinion labeled icon button click load" href="<?php echo get_post_meta($post->ID, $prefix . 'tg-link', true); ?>"><i class="add user icon"></i>加入</a>
-					<a class="ts secondary opinion labeled icon button click load" href="<?php the_permalink(); ?>"><i class="book icon"></i>閱讀</a>
-				</div>
-       		<?php else : ?>
-				<div class="ts fluid bottom attached buttons" id="PostOperation">
-					<a class="ts opinion labeled icon button click load" href="<?php echo get_post_meta($post->ID, $prefix . 'tg-link', true); ?>"><i class="add user icon"></i>加入</a>
-					<a class="ts secondary opinion labeled icon button click load" href="<?php the_permalink(); ?>"><i class="book icon"></i>閱讀</a>
-					<?php edit_post_link('<i class="write icon"></i>編輯', ''); ?>
-				</div>
-    		<?php endif; ?>
-
+			<div class="ts fluid bottom attached buttons post operation">
+				<a class="ts opinion labeled icon button click load" href="<?php echo get_post_meta($post->ID, $prefix . 'tg-link', true); ?>"><i class="add user icon"></i>加入</a>
+				<a class="ts secondary opinion labeled icon button click load" href="<?php the_permalink(); ?>"><i class="book icon"></i>閱讀</a>
+				<?php edit_post_link( '<i class="write icon"></i>編輯', '', '', '','ts secondary opinion labeled icon button click load' ); ?> 
+			</div>
 		</div>
 		<?php endwhile; ?>
 		</div>
