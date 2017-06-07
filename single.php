@@ -5,7 +5,7 @@
 			
 			<div class="ts vertically very padded left aligned slate post">
 				<div class="image">
-					<script src="//rawgit.com/gnehs/RandomPic/master/randompicture.js"></script>   
+					<script src="//gnehs.github.io/RandomPic/randompicture.js"></script>   
 				</div>
 				<span class="header"><?php the_title(); ?></span>
 				<span class="description">
