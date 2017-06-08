@@ -54,6 +54,6 @@ Template: Carter
 	當加入按鈕沒連結時，隱藏
 */
 .post.operation > a[href=""]{
-	display: none
+	display: none !important;
 }
 
