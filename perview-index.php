@@ -18,7 +18,7 @@
 		<div class="meta">
 			<a><?php the_time('Y年n月j日') ?></a>
 			<a><?php edit_post_link('編輯', ''); ?></a>
-			<a><?php the_category(‘,’) ?></a>
+			<a><?php the_category(' ') ?></a>
 		</div>
 		<div class="description">
 			<?php the_excerpt(); ?>
