@@ -13,17 +13,33 @@
 					</script> 
 				</div>
 				<span class="header"><?php the_title(); ?></span>
-				<span class="description"><?php the_time('Y/n/j') ?> <?php edit_post_link(__( 'Edit', 'Carter' ), ''); ?><?php the_category(' ') ?></span>
+				<span class="description"><?php the_time('Y/n/j') ?>
+										  <?php the_category(' ') ?>
+										  <?php comments_popup_link(__( 'No one commented', 'Carter' ), __( '1 Comment', 'Carter' ),__( '% Comments', 'Carter' ), '',__( 'Comments are closed', 'Carter' )); ?> 
+										  <?php edit_post_link(__( 'Edit', 'Carter' ), ''); ?></span>
 			</div>
-			<a class="ts fluid bottom attached button" href="<?php echo get_post_meta($post->ID, $prefix . 'tg-link', true); ?>">加入</a>
+			<a class="ts fluid bottom attached button" href="<?php echo get_post_meta($post->ID, $prefix . 'tg-link', true); ?>" data-dark>加入</a>
 			
 			<div class="ts hidden divider"></div>
 			
-			<post>
+			<post data-dark>
 				<?php the_content(); ?>
 			</post>
 			
-			<div class="ts clearing divider"></div>
+			<div class="ts clearing divider" data-dark></div>
+
+    		<h3 class="ts header" data-dark>
+				<?php esc_html_e( 'Share', 'Carter' ); ?>
+				<div class="sub header"><?php esc_html_e( 'Share to your friends', 'Carter' ); ?></div>
+			</h3>
+			<div class="ts primary large icon separated buttons" id="share" data-dark='primary'>
+    			<a class="ts button" href="https://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>&t=<?php the_title(); ?>"><i class="icon facebook f"></i></a>
+    			<a class="ts button" href="https://telegram.me/share/url?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>"><i class="icon telegram"></i></a>
+    			<a class="ts button" href="https://www.tumblr.com/widgets/share/tool?shareSource=legacy&canonicalUrl=&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>"><i class="icon tumblr"></i></a>
+    			<a class="ts button" href="https://twitter.com/intent/tweet?text=<?php the_title(); ?>&url=<?php the_permalink(); ?>"><i class="icon twitter"></i></a>
+    			<a class="ts button" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"><i class="icon google plus"></i></a>
+			</div>
+			<div class="ts clearing divider" data-dark></div>
 			
 			<?php comments_template(); ?>
 		</div>
