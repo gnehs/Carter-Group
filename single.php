@@ -3,13 +3,15 @@
 		<?php if (have_posts()) : the_post(); update_post_caches($posts); ?>
 		<div class="twelve wide column">
 			<div class="ts heading vertically padded slate attached post">
-				<script>
-					var perviewImg = Trianglify({
-						width: 1600,
-						height: 900,
-					});
-					document.write('<img src="' + perviewImg.png() + '">');
-				</script>
+				<div class="image">
+					<script>
+						var perviewImg = Trianglify({
+							width: 1600,
+							height: 900,
+						});
+						document.write('<img src="' + perviewImg.png() + '">');
+					</script> 
+				</div>
 				<span class="header"><?php the_title(); ?></span>
 				<span class="description"><?php the_time('Y/n/j') ?> <?php edit_post_link(__( 'Edit', 'Carter' ), ''); ?><?php the_category(' ') ?></span>
 			</div>
