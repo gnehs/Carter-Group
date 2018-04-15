@@ -4,7 +4,7 @@ Theme URL: https://gnehs.com.tw/
 Description: 群組蒐集君，使用好棒棒的 Tocas UI 開發
 Author: 棒棒勝
 Author URI: https://t.me/gnehs_OwO
-Version: 1.0 喵
+Version: 1.0.1 喵
 Template: carter
 GitHub Theme URI: gnehs/Carter-Group
 */
@@ -27,6 +27,7 @@ GitHub Theme URI: gnehs/Carter-Group
     background-repeat: no-repeat !important;
     transition: all 0.4s ease 0s !important;
     background-position: center center !important;
+    border: none !important;
 }
 
 .ts.card.inverted.group {
