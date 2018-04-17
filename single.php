@@ -13,10 +13,10 @@
 					</script> 
 				</div>
 				<span class="header"><?php the_title(); ?></span>
-				<span class="description"><?php the_time('Y/n/j') ?>
-										  <?php the_category(' ') ?>
-										  <?php comments_popup_link(__( 'No one commented', 'Carter' ), __( '1 Comment', 'Carter' ),__( '% Comments', 'Carter' ), '',__( 'Comments are closed', 'Carter' )); ?> 
-										  <?php edit_post_link(__( 'Edit', 'Carter' ), ''); ?></span>
+				<span class="description"><i class="calendar icon"></i><?php the_time('Y/n/j') ?>
+										  <i class="tag icon"></i><?php the_category(' ') ?> 
+										  <i class="comment icon"></i><?php comments_popup_link(__( 'No one commented', 'Carter' ), __( '1 Comment', 'Carter' ),__( '% Comments', 'Carter' ), '',__( 'Comments are closed', 'Carter' )); ?> 
+										  <?php edit_post_link('<i class="pencil icon"></i>'); ?><?php edit_post_link(__( 'Edit', 'Carter' ), ''); ?></span>
 			</div>
 			<a class="ts fluid bottom attached button" href="<?php echo get_post_meta($post->ID, $prefix . 'tg-link', true); ?>" data-dark>加入</a>
 			

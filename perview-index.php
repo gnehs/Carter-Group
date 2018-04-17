@@ -16,9 +16,8 @@
 	<div class="content">
 		<div class="header"><?php the_title(); ?></div>
 		<div class="meta">
-			<a><?php the_time('Y年n月j日') ?></a>
-			<a><?php edit_post_link('編輯', ''); ?></a>
-			<a><?php the_category(' ') ?></a>
+			<a><i class="calendar icon"></i><?php the_time('Y年n月j日') ?></a>
+			<a><i class="tag icon"></i></a><?php the_category(' ') ?>
 		</div>
 		<div class="description">
 			<?php the_excerpt(); ?>
