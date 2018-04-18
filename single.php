@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 	<?php if ( in_category(get_cat_ID('NSFW')) ) { ?>	
-		<style>.inverted .swal-overlay {background-color: rgba(66, 66, 66, 1);}</style>
+		<style>.swal-overlay {background-color: rgba(66, 66, 66, 1);}</style>
 		<script>
 			if(!window.localStorage["adultAlert"]){
 				swal({
