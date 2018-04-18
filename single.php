@@ -1,4 +1,23 @@
 <?php get_header(); ?>
+	<?php if ( in_category(get_cat_ID('NSFW')) ) { ?>	
+		<style>.inverted .swal-overlay {background-color: rgba(66, 66, 66, 1);}</style>
+		<script>
+			if(!window.localStorage["adultAlert"]){
+				swal({
+					title: "警告 WARNING",
+					text: "該內容可能令人反感；不可將本物品內容派發，傳閱，出售，出租，交給或出借予年齡未滿 18 歲的人士出示，播放或播映。This article contains material which may offernd and may not be distributed, circulated, sold, hired, given, lent, shown, played or projected to a person under the age of 18 years. All models are 18 or older. ",
+					icon: "info",
+					buttons: true,
+					dangerMode: true,
+				}).then((value) => {
+					if (!value)
+						document.location.href="/";
+					else
+						window.localStorage["adultAlert"] = true
+				});
+			}
+		</script>
+	<?php } ?>
 	<div class="ts narrow container" style="padding-top: 20px;"><div class="ts stackable grid">
 		<?php if (have_posts()) : the_post(); update_post_caches($posts); ?>
 		<div class="twelve wide column">
@@ -20,8 +39,11 @@
 										  <i class="comment icon"></i><?php comments_popup_link(__( 'No one commented', 'Carter' ), __( '1 Comment', 'Carter' ),__( '% Comments', 'Carter' ), '',__( 'Comments are closed', 'Carter' )); ?> 
 										  <?php edit_post_link('<i class="pencil icon"></i>'); ?><?php edit_post_link(__( 'Edit', 'Carter' ), ''); ?></span>
 			</div>
-			<a class="ts fluid bottom attached button" href="<?php echo get_post_meta($post->ID, $prefix . 'tg-link', true); ?>" data-dark>加入</a>
-			
+			<?php if ( in_category(get_cat_ID('NSFW')) ) { ?>
+				<a class="ts fluid bottom attached button" data-R18href="<?php echo get_post_meta($post->ID, $prefix . 'tg-link', true); ?>" data-dark>加入</a>
+			<?php } else { ?>
+				<a class="ts fluid bottom attached button" href="<?php echo get_post_meta($post->ID, $prefix . 'tg-link', true); ?>" data-dark>加入</a>
+			<?php } ?>
 			<div class="ts hidden divider"></div>
 			
 			<post data-dark>

@@ -24,8 +24,13 @@
 		</div>
 	</div>
 	<div class="ts fluid bottom attached buttons post operation">
-		<a class="ts opinion button" href="<?php echo get_post_meta($post->ID, $prefix . 'tg-link', true); ?>"><i class="plus icon"></i>加入</a>
-		<a class="ts labeled icon opinion button click load" href="<?php the_permalink(); ?>"><i class="unhide icon"></i>更多資訊</a>
+		<?php if ( in_category(get_cat_ID('NSFW')) ) { ?>
+			<a class="ts opinion button" data-R18href="<?php echo get_post_meta($post->ID, $prefix . 'tg-link', true); ?>"><i class="plus icon"></i>加入</a>
+			<a class="ts labeled icon opinion button click load" data-R18href="<?php the_permalink(); ?>"><i class="unhide icon"></i>更多資訊</a>
+		<?php } else { ?>
+			<a class="ts opinion button" href="<?php echo get_post_meta($post->ID, $prefix . 'tg-link', true); ?>"><i class="plus icon"></i>加入</a>
+			<a class="ts labeled icon opinion button click load" href="<?php the_permalink(); ?>"><i class="unhide icon"></i>更多資訊</a>
+		<?php } ?>
 		<?php edit_post_link( '<i class="write icon"></i>' . __( 'Edit', 'Carter' ), '', '', '','ts labeled icon opinion button click load' ); ?> 
 	</div>
 </div>
