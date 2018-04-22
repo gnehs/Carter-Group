@@ -115,25 +115,13 @@ if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
 	後台新增訊息方塊
 */
 function wpc_dashboard_widget_function() {
-    echo '<p>您好，歡迎來到網站控制台。如果操作過程中有遇到任何問題，歡迎騷擾 <a href="https://t.me/gnehs_OwO">棒棒勝</a> ，謝謝。</p>';
-	echo '<p>喔對， <a href="https://tg.gnehs.com.tw/add/">這個</a> 是加入的教學</p>';
+    echo '<p>您好，歡迎來到網站控制台。如果操作過程中有遇到任何問題，歡迎騷擾 <a href="https://t.me/gnehs_OwO">棒棒勝</a></p>';
+	echo '<p><a class="button button-primary" href="/wp-admin/post-new.php">提交群組 / 頻道</a>   <a class="button" href="/23">加入教學</a></p>';
 }
 function wpc_add_dashboard_widgets() {
     wp_add_dashboard_widget('wp_dashboard_widgets', '歡迎使用OuO', 'wpc_dashboard_widget_function');
 }
 add_action('wp_dashboard_setup', 'wpc_add_dashboard_widgets' );
-
-/*
-	登入介面美化
-*/
-function gnehs_login_css_group() {
-    echo '<style type="text/css">
-            .login h1 a { 
-                background-image:url(//i.imgur.com/xqh06wM.png) !important;
-            }
-            </style>';
-}
-add_action('login_head', 'gnehs_login_css_group');
 
 /*
 	登入 Logo 連結替換
@@ -142,4 +130,75 @@ function custom_loginlogo_url($url) {
     return get_bloginfo('url');
 }
 add_filter( 'login_headerurl', 'custom_loginlogo_url' );
+
+/*
+    對不是管理員者隱藏多餘頁面
+*/
+function remove_menu_pages_for_not_admins() {
+ 
+    global $user_ID;
+ 
+    if ( !current_user_can('level_10') ) {
+        remove_menu_page('tools.php'); // Tools
+        remove_menu_page('profile.php'); // profile
+        remove_menu_page('edit-comments.php'); // comments
+    }
+}
+add_action( 'admin_init', 'remove_menu_pages_for_not_admins' );
+
+/*
+    對不是管理員者隱藏多餘控制台項目
+*/
+function remove_dashboard_widgets_for_not_admins() {
+    if ( !current_user_can('level_10') ) {
+        global $wp_meta_boxes;
+        // 收到新鏈結
+        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
+        // 外掛
+        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+        // WordPress Blog
+        unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+        // Other WordPress News
+        unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+        // 快速草稿
+        unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+        // 概況
+        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+        // 活動
+        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);
+    }
+}
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets_for_not_admins');
+
+/*
+    Hide admin Bar
+*/
+function hide_admin_bar_for_not_admins($flag) {
+    if ( !current_user_can('level_10') ) {
+        return false;
+    }else{
+        return true;
+    }
+}
+add_filter('show_admin_bar','hide_admin_bar_for_not_admins');
+
+/*
+    文章編輯頁
+*/
+function remove_post_metaboxes_for_not_admins() {
+    if ( !current_user_can('level_10') ) {
+        remove_meta_box( 'authordiv','post','normal' ); // 作者模块
+        remove_meta_box( 'commentstatusdiv','post','normal' ); // 评论状态模块
+        remove_meta_box( 'commentsdiv','post','normal' ); // 评论模块
+        remove_meta_box( 'postcustom','post','normal' ); // 自定义字段模块
+        remove_meta_box( 'postexcerpt','post','normal' ); // 摘要模块
+        remove_meta_box( 'revisionsdiv','post','normal' ); // 修订版本模块
+        remove_meta_box( 'slugdiv','post','normal' ); // 别名模块
+        remove_meta_box( 'trackbacksdiv','post','normal' ); // 引用模块
+        remove_meta_box( 'formatdiv','post','normal' ); // 文章格式模块
+        remove_meta_box( 'tagsdiv-post_tag','post','normal' ); // 标签模块
+    }
+}
+add_action('admin_menu','remove_post_metaboxes_for_not_admins');
+
 ?>
