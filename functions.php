@@ -18,7 +18,6 @@ $meta_box = array(
         )
     )
 );
-add_action('admin_menu', 'mytheme_add_box');
 
 // Add meta box
 function mytheme_add_box() {
@@ -26,6 +25,7 @@ function mytheme_add_box() {
 
     add_meta_box($meta_box['id'], $meta_box['title'], 'mytheme_show_box', $meta_box['page'], $meta_box['context'], $meta_box['priority']);
 }
+add_action('admin_menu', 'mytheme_add_box');
 // Callback function to show fields in meta box
 function mytheme_show_box() {
     global $meta_box, $post;
@@ -71,8 +71,6 @@ function mytheme_show_box() {
 
     echo '</table>';
 }
-add_action('save_post', 'mytheme_save_data');
-
 // Save data from meta box
 function mytheme_save_data($post_id) {
     global $meta_box;
@@ -110,6 +108,8 @@ function mytheme_save_data($post_id) {
 if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
  return $post_id;
 }
+add_action('save_post', 'mytheme_save_data');
+
 
 /*
 	後台新增訊息方塊
