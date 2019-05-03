@@ -18,14 +18,21 @@ $meta_box = array(
         )
     )
 );
+add_action('admin_menu', 'mytheme_add_box');
 
+/*
+	API 加入 meta
+*/
+register_rest_field( 'post', 'metadata', array(
+    'get_callback' => function ( $data ) {
+        return get_post_meta( $data['id'], '', '' );
+    }, ));
 // Add meta box
 function mytheme_add_box() {
     global $meta_box;
 
     add_meta_box($meta_box['id'], $meta_box['title'], 'mytheme_show_box', $meta_box['page'], $meta_box['context'], $meta_box['priority']);
 }
-add_action('admin_menu', 'mytheme_add_box');
 // Callback function to show fields in meta box
 function mytheme_show_box() {
     global $meta_box, $post;
@@ -71,6 +78,8 @@ function mytheme_show_box() {
 
     echo '</table>';
 }
+add_action('save_post', 'mytheme_save_data');
+
 // Save data from meta box
 function mytheme_save_data($post_id) {
     global $meta_box;
@@ -108,8 +117,6 @@ function mytheme_save_data($post_id) {
 if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
  return $post_id;
 }
-add_action('save_post', 'mytheme_save_data');
-
 
 /*
 	後台新增訊息方塊
@@ -175,9 +182,7 @@ add_action('wp_dashboard_setup', 'remove_dashboard_widgets_for_not_admins');
 */
 function hide_admin_bar_for_not_admins($flag) {
     if ( !current_user_can('level_10') ) {
-        return false;
-    }else{
-        return true;
+    return false;
     }
 }
 add_filter('show_admin_bar','hide_admin_bar_for_not_admins');
@@ -200,5 +205,11 @@ function remove_post_metaboxes_for_not_admins() {
     }
 }
 add_action('admin_menu','remove_post_metaboxes_for_not_admins');
+
+function wptutsplus_login_logo() { ?>
+    <style type="text/css">
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'wptutsplus_login_logo' );
 
 ?>
