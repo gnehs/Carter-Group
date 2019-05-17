@@ -14,13 +14,9 @@ GitHub Theme URI: gnehs/Carter-Group
 /*
     瀑布流
 */
-* {
-    box-sizing: border-box;
-}
-
 #content>.index {
     column-count: 2;
-    column-gap: 16px;
+    column-gap: 24px;
     margin: 16px 0;
 }
 
