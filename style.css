@@ -4,7 +4,7 @@ Theme URL: https://gnehs.com.tw/
 Description: 群組蒐集君，使用好棒棒的 Tocas UI 開發
 Author: 棒棒勝
 Author URI: https://t.me/gnehs_OwO
-Version: 1.0.1 喵
+Version: 2.0.0
 Template: carter
 GitHub Theme URI: gnehs/Carter-Group
 */
@@ -12,64 +12,20 @@ GitHub Theme URI: gnehs/Carter-Group
 @import url("../carter/style.css");
 
 /*
-	群組卡片
+    瀑布流
 */
-
-.ts.card.inverted>.content .description>p {
-    color: rgba(255, 255, 255, 0.68);
+* {
+    box-sizing: border-box;
 }
 
-.ts.card.inverted>.content .meta>a {
-    color: rgba(255, 255, 255, 0.37);
+#content>.index {
+    column-count: 2;
+    column-gap: 16px;
+    margin: 16px 0;
 }
 
-.ts.card {
-    background-repeat: no-repeat !important;
-    transition: all 0.4s ease 0s !important;
-    background-position: center center !important;
-    border: none !important;
-}
-
-.ts.card.inverted.group {
-    border-bottom-width: 0px !important;
-    background-color: #9c5e2d !important;
-    background-image: url("//i.imgur.com/J35xHib.png") !important;
-}
-
-.ts.card.inverted.ch {
-    border-bottom-width: 0px !important;
-    background-color: #a53046 !important;
-    background-image: url("//i.imgur.com/32jPJq9.png") !important;
-}
-
-.ts.card.inverted.site {
-    border-bottom-width: 0px !important;
-    background-color: #8B81C3 !important;
-    background-image: url("//i.imgur.com/3USM1Ao.png") !important;
-}
-
-.ts.card.inverted.info {
-    border-bottom-width: 0px !important;
-    border-color: rgba(0, 0, 0, 0) !important;
-    background-image: url("//i.imgur.com/OOf2lH2.png") !important;
-    background-position: 100% 100% !important;
-}
-
-
-/*
-	分類
-*/
-
-.post-categories {
-    color: #FFF;
-    display: inline-flex;
-}
-
-
-/*
-	當加入按鈕沒連結時，隱藏
-*/
-
-a[href=""] {
-    display: none !important;
+@media screen and (max-width: 768px) {
+    #content>.index {
+        column-count: 1;
+    }
 }
