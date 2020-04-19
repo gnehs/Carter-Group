@@ -12,7 +12,7 @@ $category_id_site  = get_cat_ID('🧭網站');
 	<div>
 		<?php edit_post_link('<i class="write icon"></i>', '', '', '', 'ts large icon right floated edit opinion button m-8'); ?>
 		<div class="header-wrapper">
-			<div class="bg" style="background-image:url('<?php echo (has_post_thumbnail() ? the_post_thumbnail_url() : "https://picsum.photos/1200?" . rand()) ?>')"></div>
+			<div class="bg" style="background-image:url('<?php echo (has_post_thumbnail() ? the_post_thumbnail_url() : "https://picsum.photos/80?" . rand()) ?>')"></div>
 		</div>
 		<div class="header">
 			<a class="title" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
@@ -59,6 +59,7 @@ $category_id_site  = get_cat_ID('🧭網站');
 		</div>
 	</div>
 </div>
+<?php /*
 <!--
 <?php if (in_category($category_id_ch)) { ?>
 	<div class="ts inverted ch card">
@@ -70,4 +71,5 @@ $category_id_site  = get_cat_ID('🧭網站');
 	<div class="ts inverted site card">
 <?php } else { ?>
 	<div class="ts inverted card">
-<?php } ?>-->
+<?php } ?>-->*/
+?>
