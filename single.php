@@ -70,9 +70,7 @@ $category_id_site  = get_cat_ID('🧭網站');
 			if (!empty($categories)) {
 				$output = '<p>';
 				foreach ($categories as $category) {
-					$output .= '<a class="ts horizontal basic label" href="' . esc_url(get_category_link($category->term_id)) . '">
-						<i class="th icon"></i>' . esc_html($category->name) . '
-					</a>';
+					$output .= '<a class="ts horizontal basic label" href="' . esc_url(get_category_link($category->term_id)) . '">' . esc_html($category->name) . '</a>';
 				}
 				$output .= '</p>';
 				echo $output;
