@@ -29,7 +29,7 @@ GitHub Theme URI: gnehs/Carter-Group
 .preview-index {
     display: inline-block;
     width: 100%;
-    min-height: 180px;
+    min-height: 100px;
     margin: 0 0 16px 0;
 }
 
@@ -43,11 +43,13 @@ GitHub Theme URI: gnehs/Carter-Group
 }
 
 .preview-index div>.description {
-
     font-size: 1em;
 }
 
 .preview-index div>.continue {
+    font-size: .9em;
+}
 
-    font-size: .8em;
+.meta div+div:before {
+    content: "．";
 }
